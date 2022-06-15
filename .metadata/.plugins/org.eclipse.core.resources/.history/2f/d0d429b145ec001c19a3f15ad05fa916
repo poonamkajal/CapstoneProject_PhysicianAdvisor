@@ -1,0 +1,33 @@
+package com.perscholas.poonamkajal.physicianadvisor.models;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "Address")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Address {
+    @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String addressLine1;
+	private String addressLine2;
+	private String city;
+	private String state; //2-letter state code
+	private String zipcode; // 5-digit zip code
+	private String country; // Always USA
+
+}

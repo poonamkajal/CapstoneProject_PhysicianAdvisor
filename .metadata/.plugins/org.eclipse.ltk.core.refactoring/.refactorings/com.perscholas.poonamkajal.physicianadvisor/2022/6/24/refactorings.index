@@ -1,0 +1,20 @@
+1654550500108	Rename package 'com.example.com.perscholas.poonam.physicianadvisor'
+1654550862072	Rename type 'User'
+1654554686875	Copy package
+1654554721397	Delete element
+1654554848564	Delete element
+1654554864397	Delete element
+1654555150604	Rename package 'repository'
+1654559005389	Rename resource ' registration .html'
+1654559700913	Rename type 'Registration'
+1654559814070	Rename resource 'login.html'
+1654560064129	Rename resource 'registration.html'
+1654562622812	Rename resource 'login1.html'
+1654562638963	Rename resource 'registration1.html'
+1654621929592	Rename package 'com.perscholas.poonam.implementation'
+1654621948480	Rename package 'com.perscholas.poonam.dto'
+1654621980873	Rename package 'com.perscholas.poonam.repository'
+1654621999889	Rename package 'com.perscholas.poonam.security'
+1654622016704	Rename package 'com.perscholas.poonam.services'
+1654622031870	Rename package 'com.perscolas.poonam.controller'
+1654622046091	Rename package 'com.perscolas.poonam.models'

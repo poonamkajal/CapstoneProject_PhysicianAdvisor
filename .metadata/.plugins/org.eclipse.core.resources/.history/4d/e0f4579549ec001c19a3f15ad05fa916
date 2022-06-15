@@ -1,0 +1,75 @@
+package com.perscholas.poonamkajal.physicianadvisor.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.perscholas.poonamkajal.physicianadvisor.implementation.DoctorServiceImpl;
+import com.perscholas.poonamkajal.physicianadvisor.implementation.PatientServiceImpl;
+import com.perscholas.poonamkajal.physicianadvisor.models.Doctor;
+import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
+@RestController
+@RequestMapping("/api")
+public class DoctorController {
+	@Autowired
+	private DoctorServiceImpl doctorService;
+	
+	@GetMapping("/doctor")
+	   public List<Doctor> getAllDoctor(@RequestParam(required = false) Long Id)         {
+	       return doctorService.getAllDoctor();
+	      
+	   }
+
+	@GetMapping("/doctor/{id}")
+	public Optional<Doctor> getDoctorById(@PathVariable("id") long id) {
+
+		return doctorService.getDoctorById(id);
+	}
+
+	@PostMapping("/doctor")
+	public void createPatient(@RequestBody Doctor doctor) {
+		doctorService.addDoctor(doctor);
+	}
+
+	@PutMapping("/doctor/{id}")
+	public void updatePatient(@PathVariable("id") long id, @RequestBody Doctor doctor) {
+		Optional<Doctor> doctorData = doctorService.getDoctorById(id);
+
+		if (doctorData.isPresent()) {
+			Doctor _doctor = doctorData.get();
+			_doctor.setFirstName(doctor.getFirstName());
+			_doctor.setLastName(doctor.getLastName());
+			_doctor.setSpeciality(doctor.getSpeciality());
+			doctorService.save(_doctor);
+		}
+	}
+
+	@DeleteMapping("/patient/{id}")
+	public void deletePatient(@PathVariable("id") long id) {
+		patientService.deletePatient(id);
+	}
+
+	@DeleteMapping("/patient")
+	public void deleteAllTutorials() {
+
+		patientService.deleteAllPatient();
+	}
+
+	@GetMapping("/patient/id")
+	public ResponseEntity<Optional<Patient>> findById() {
+		return patientService.findById();
+	}
+
+
+}

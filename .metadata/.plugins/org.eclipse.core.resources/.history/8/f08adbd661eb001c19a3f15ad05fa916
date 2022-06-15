@@ -1,0 +1,5 @@
+package com.perscholas.poonam.physicianadvisor.models;
+
+public class Patient {
+
+}

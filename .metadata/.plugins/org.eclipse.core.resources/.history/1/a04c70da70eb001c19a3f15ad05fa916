@@ -1,0 +1,17 @@
+package com.perscholas.poonamkajal.physicianadvisor.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
+
+@Repository
+public interface PatientRepository extends CrudRepository<Patient, Long> {
+  Optional<Patient> findById(Long Id);
+  
+  List<Patient> findAll();
+}
+

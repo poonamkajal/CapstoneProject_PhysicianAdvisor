@@ -1,0 +1,13 @@
+package com.perscholas.poonamkajal.physicianadvisor.services;
+
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.perscholas.poonam.physicianadvisor.models.User;
+import com.perscholas.poonamkajal.physicianadvisor.dto.UserRegistrationDto;
+
+public interface UserService extends UserDetailsService {
+   User findByEmail(String email);
+   User save(UserRegistrationDto registration);
+}
+

@@ -1,0 +1,31 @@
+package com.perscholas.poonamkajal.physicianadvisor.models;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Insurance {
+	
+	   @Id
+	   @GeneratedValue(strategy = GenerationType.AUTO)
+	   private Long id;
+	   private String providerName;
+	   private String insuranceId;
+	   private String groupId;
+	   private Date effectiveDate;
+	   private Date expirationDate;
+	   private String contactNo;
+	   private String details; //Copay, deductible etc. for physician advisor doctor's info
+
+}

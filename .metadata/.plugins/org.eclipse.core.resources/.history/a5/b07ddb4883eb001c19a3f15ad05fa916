@@ -1,0 +1,36 @@
+package com.perscholas.poonamkajal.physicianadvisor.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.perscholas.poonamkajal.physicianadvisor.implementation.PatientServiceImpl;
+import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
+import com.perscholas.poonamkajal.physicianadvisor.services.PatientService;
+
+@RestController
+@RequestMapping("/api")
+
+public class PatientController {
+	@Autowired
+	private PatientServiceImpl patientService;
+	
+	@GetMapping("/patient/{id}")
+	public Optional<Patient> getPatientById(@PathVariable("id") long id) {
+	    
+	       return  patientService.getPatientById(id);
+	   }
+	@PostMapping("/patient")
+	   public void createTutorial(@RequestBody Patient patient) {
+	       patientService.addPatient(patient);
+	   }
+
+
+
+}

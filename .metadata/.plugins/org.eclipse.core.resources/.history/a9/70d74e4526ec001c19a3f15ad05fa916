@@ -1,0 +1,51 @@
+package com.perscholas.poonamkajal.physicianadvisor.dto;
+
+import java.util.Date;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PatientDto {
+	
+	@NotEmpty
+	private String firstName;
+	
+	@NotEmpty
+	private String lastName;
+	
+	@NotEmpty
+	private Date dob;
+	
+//	@NotEmpty
+//	@Email
+//	private String email;
+//	
+//	@NotEmpty
+//	private String contactNo;
+//	
+//	@NotEmpty
+//	private String addressLine1;
+//
+//	private String addressLine2;
+//
+//	@NotEmpty
+//	private String city;
+//	
+//	@NotEmpty
+//	private String state; //2-letter state code
+//
+//	@NotEmpty
+//	private String zipcode; // 5-digit zip code
+//
+//	@NotEmpty
+//	private String country; // Always USA
+
+}

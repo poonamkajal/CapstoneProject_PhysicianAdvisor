@@ -1,0 +1,5 @@
+package com.perscholas.poonamkajal.physicianadvisor.services;
+
+public interface DoctorService {
+
+}

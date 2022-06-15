@@ -1,0 +1,59 @@
+package com.perscholas.poonamkajal.physicianadvisor.models;
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "Cases")
+@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Case {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Patient patient;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+	private Doctor doctor;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+	private Hospital hospital;
+	private Date dateOfAdmission;
+	private Date dateOfDischarge;
+	private String medicalRecordId;
+	private String diagnosis; // comma separated diagnosis
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+	private Insurance primaryInsurance;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+	private Insurance secondaryInsurance;
+	private String attendingDoctorName;
+	private String attendingDoctorContactNo;
+	private String paReco; // Physican Advistor Doctor's recommendations for the case
+	private String caseStatus;
+}

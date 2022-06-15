@@ -1,0 +1,12 @@
+package com.perscholas.poonamkajal.physicianadvisor.services;
+
+
+
+import com.perscholas.poonamkajal.physicianadvisor.dto.PatientDto;
+import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
+
+public interface PatientService {
+   Patient findBypatientId(Long patientId);
+   Patient save(PatientDto patientinfo);
+}
+
