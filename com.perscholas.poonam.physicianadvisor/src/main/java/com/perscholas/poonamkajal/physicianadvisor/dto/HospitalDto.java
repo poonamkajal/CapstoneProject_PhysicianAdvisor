@@ -6,7 +6,6 @@ public class HospitalDto {
 	
 	@NotEmpty
 	private Long id;
-	
 	@NotEmpty
 	private String name;
 	
@@ -14,19 +13,44 @@ public class HospitalDto {
 	private String facilityName;
 	
 	@NotEmpty
-	private String addressLine1;
+	private AddressDto address;
 
-	private String addressLine2;
+	public Long getId() {
+		return id;
+	}
 
-	@NotEmpty
-	private String city;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getFacilityName() {
+		return facilityName;
+	}
+
+	public void setFacilityName(String facilityName) {
+		this.facilityName = facilityName;
+	}
+
+	public AddressDto getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressDto address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "HospitalDto [id=" + id + ", name=" + name + ", facilityName=" + facilityName + ", address=" + address
+				+ "]";
+	}
 	
-	@NotEmpty
-	private String state; //2-letter state code
-
-	@NotEmpty
-	private String zipcode; // 5-digit zip code
-
-	@NotEmpty
-	private String country; // Always USA
 }

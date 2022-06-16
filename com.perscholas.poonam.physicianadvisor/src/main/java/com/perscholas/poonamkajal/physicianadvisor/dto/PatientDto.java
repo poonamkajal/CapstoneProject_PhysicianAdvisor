@@ -4,6 +4,9 @@ import java.util.Date;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.perscholas.poonamkajal.physicianadvisor.models.Address;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientDto {
-	
+	@NotEmpty
+	private Long id;
 	@NotEmpty
 	private String firstName;
 	
@@ -31,20 +35,71 @@ public class PatientDto {
 	private String contactNo;
 	
 	@NotEmpty
-	private String addressLine1;
-
-	private String addressLine2;
-
-	@NotEmpty
-	private String city;
+	private Address address;
 	
-	@NotEmpty
-	private String state; //2-letter state code
+	
 
-	@NotEmpty
-	private String zipcode; // 5-digit zip code
+	public Long getId() {
+		return id;
+	}
 
-	@NotEmpty
-	private String country; // Always USA
+	public void setId(Long id) {
+		this.id = id;
+	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "PatientDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
+				+ ", email=" + email + ", contactNo=" + contactNo + ", address=" + address + "]";
+	}
+
+	
 }

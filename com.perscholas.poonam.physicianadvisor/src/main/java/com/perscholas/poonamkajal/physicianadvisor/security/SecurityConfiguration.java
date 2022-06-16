@@ -3,8 +3,10 @@ package com.perscholas.poonamkajal.physicianadvisor.security;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,19 +24,22 @@ import com.perscholas.poonamkajal.physicianadvisor.services.UserService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-	
+   
+   @Autowired
    private UserService userService;
 
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-       /**http
+       http
                .authorizeRequests()
-                   .antMatchers(
+                   /*.antMatchers(
                            "/registration**",
                            "/js/**",
                            "/css/**",
                            "/img/**",
-                           "/webjars/**").permitAll()
+                           "/webjars/**")*/               					
+               		.antMatchers("/**")
+               				.permitAll()
                    .anyRequest().authenticated()
                .and()
                    .formLogin()
@@ -46,8 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                        .clearAuthentication(true)
                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                        .logoutSuccessUrl("/login?logout")
-               .permitAll();**/
-	   http.authorizeRequests().antMatchers("/**").permitAll();
+               .permitAll();
+	   //http.authorizeRequests().antMatchers("/**").permitAll();
 	   http.cors().and().csrf().disable();
    }
    
@@ -64,12 +69,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
    }
 
 
-   @Bean
-   public static BCryptPasswordEncoder passwordEncoder(){
-       return new BCryptPasswordEncoder();
-   }
+    @Bean
+    static BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-/**   @Bean
+   @Bean
    public DaoAuthenticationProvider authenticationProvider(){
        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
        auth.setUserDetailsService(userService);
@@ -80,7 +85,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
        auth.authenticationProvider(authenticationProvider());
-   } **/
+   }
 
 }
 

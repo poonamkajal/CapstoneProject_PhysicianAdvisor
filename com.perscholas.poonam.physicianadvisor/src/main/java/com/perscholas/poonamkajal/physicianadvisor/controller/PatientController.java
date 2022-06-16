@@ -1,8 +1,6 @@
 package com.perscholas.poonamkajal.physicianadvisor.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,68 +12,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.perscholas.poonamkajal.physicianadvisor.implementation.PatientServiceImpl;
-import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
+import com.perscholas.poonamkajal.physicianadvisor.dto.PatientDto;
 
 @RestController
 @RequestMapping("/api")
-
 public class PatientController {
 	@Autowired
 	private PatientServiceImpl patientService;
 	
 	@GetMapping("/patient")
-	   public List<Patient> getAllPatient(@RequestParam(required = false) String title)         {
+	   public List<PatientDto> getAllPatient(@RequestParam(required = false) Long Id){
 	       return patientService.getAllPatient();
 	      
 	   }
 
 	@GetMapping("/patient/{id}")
-	public Optional<Patient> getPatientById(@PathVariable("id") long id) {
+	public PatientDto getPatientById(@PathVariable("id") Long id) {
 
 		return patientService.getPatientById(id);
 	}
 
 	@PostMapping("/patient")
-	public void createPatient(@RequestBody Patient patient) {
+	public void createPatient(@RequestBody PatientDto patient) {
 		patientService.addPatient(patient);
 	}
 
 	@PutMapping("/patient/{id}")
-	public void updatePatient(@PathVariable("id") long id, @RequestBody Patient patient) {
-		Optional<Patient> patientData = patientService.getPatientById(id);
-
-		if (patientData.isPresent()) {
-			Patient _patient = patientData.get();
-			_patient.setFirstName(patient.getFirstName());
-			_patient.setLastName(patient.getLastName());
-			_patient.setDob(patient.getDob());
-			_patient.setEmail(patient.getEmail());
-			_patient.setAddress(patient.getAddress());
-			_patient.setContactNo(patient.getContactNo());
-			_patient.setCreateDate(patient.getCreateDate());
-			_patient.setCreatedBy(patient.getCreatedBy());
-			_patient.setUpdatedBy(patient.getUpdatedBy());
-			_patient.setUpdateDate(patient.getUpdateDate());
-			patientService.addPatient(_patient);
-		}
+	public void updatePatient(@PathVariable("id") Long id, @RequestBody PatientDto p) {
+		System.out.println("Update Case " + p.toString());
+		patientService.updatePatient(id, p);
 	}
-
+	
 	@DeleteMapping("/patient/{id}")
-	public void deletePatient(@PathVariable("id") long id) {
+	public void deletePatient(@PathVariable("id") Long id) {
 		patientService.deletePatient(id);
 	}
 
-	@DeleteMapping("/patient")
-	public void deleteAllTutorials() {
-
-		patientService.deleteAllPatient();
-	}
-
 	@GetMapping("/patient/id")
-	public ResponseEntity<Optional<Patient>> findById() {
-		return patientService.findById();
+	public ResponseEntity<PatientDto> findById(@PathVariable("id") Long id) {
+		return patientService.findById(id);
 	}
 
 }
