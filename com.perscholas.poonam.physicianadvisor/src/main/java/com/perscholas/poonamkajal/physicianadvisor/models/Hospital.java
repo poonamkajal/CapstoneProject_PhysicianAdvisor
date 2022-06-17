@@ -26,7 +26,7 @@ public class Hospital {
 	   private String facilityName;
 		
 	   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-       private Address address;
+       private Address address = new Address();
 
 	public Long getId() {
 		return id;

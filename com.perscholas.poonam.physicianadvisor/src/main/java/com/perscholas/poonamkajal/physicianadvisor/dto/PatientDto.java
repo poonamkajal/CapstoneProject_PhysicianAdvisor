@@ -4,9 +4,6 @@ import java.util.Date;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.perscholas.poonamkajal.physicianadvisor.models.Address;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientDto {
-	@NotEmpty
 	private Long id;
+
 	@NotEmpty
 	private String firstName;
 	
@@ -35,9 +32,19 @@ public class PatientDto {
 	private String contactNo;
 	
 	@NotEmpty
-	private Address address;
+	private AddressDto address;
 	
+	@NotEmpty
+	private String createdBy;
 	
+	@NotEmpty
+	private Date createDate;
+	
+	@NotEmpty
+	private String updatedBy;
+	
+	@NotEmpty
+	private Date updateDate;
 
 	public Long getId() {
 		return id;
@@ -47,6 +54,40 @@ public class PatientDto {
 		this.id = id;
 	}
 
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -87,19 +128,23 @@ public class PatientDto {
 		this.contactNo = contactNo;
 	}
 
-	public Address getAddress() {
+	public AddressDto getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(AddressDto address) {
 		this.address = address;
 	}
 
 	@Override
 	public String toString() {
 		return "PatientDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", email=" + email + ", contactNo=" + contactNo + ", address=" + address + "]";
+				+ ", email=" + email + ", contactNo=" + contactNo + ", address=" + address + ", createdBy=" + createdBy
+				+ ", createDate=" + createDate + ", updatedBy=" + updatedBy + ", updateDate=" + updateDate + "]";
 	}
+
+	
+	
 
 	
 }

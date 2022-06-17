@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorDto {
-	@NotEmpty
+	
 	private Long id;
 	@NotEmpty
     private String firstName;
@@ -42,6 +42,14 @@ public class DoctorDto {
 
 	public void setSpeciality(String speciality) {
 		this.speciality = speciality;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override

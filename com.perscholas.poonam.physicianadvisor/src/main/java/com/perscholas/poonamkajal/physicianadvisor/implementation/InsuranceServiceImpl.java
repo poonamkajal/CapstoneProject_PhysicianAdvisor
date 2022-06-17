@@ -3,12 +3,12 @@ package com.perscholas.poonamkajal.physicianadvisor.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import com.perscholas.poonamkajal.physicianadvisor.dto.InsuranceDto;
 import com.perscholas.poonamkajal.physicianadvisor.models.Insurance;
 import com.perscholas.poonamkajal.physicianadvisor.repository.InsuranceRepository;
 
@@ -17,53 +17,63 @@ public class InsuranceServiceImpl {
 	@Autowired
 	private InsuranceRepository insuranceRepository;
 
-	public List<Insurance> getAllInsurance() {
+	public List<InsuranceDto> getAllInsurance() {
 
-	       List<Insurance> insurance = new ArrayList<Insurance>();
-	       insuranceRepository.findAll().forEach(insurance::add);
-	       return insurance;
-	   }
+		List<InsuranceDto> insuranceDtos = new ArrayList<InsuranceDto>();
+		insuranceRepository.findAll().forEach(i -> {
+			InsuranceDto idto = new InsuranceDto();
+			BeanUtils.copyProperties(i, idto);
+			insuranceDtos.add(idto);
+		});
 
-	public Optional<Insurance> getInsuranceById(Long id) {
-		return insuranceRepository.findById(id);
+		return insuranceDtos;
 	}
 
-	public void addInsurance(Insurance insurance) {
-		insuranceRepository.save(insurance);
+	public InsuranceDto getInsuranceById(Long id) {
+		Optional<Insurance> i = insuranceRepository.findById(id);
+		InsuranceDto idto = new InsuranceDto();
+		if (i.isPresent()) {
+			BeanUtils.copyProperties(i.get(), idto);
+		}
+		return idto;
 	}
 
-	public void updateInsurance(long id, Insurance insurance) {
+	public void addInsurance(InsuranceDto insurance) {
+		Insurance i = new Insurance();
+		BeanUtils.copyProperties(insurance, i);
+		insuranceRepository.save(i);
+	}
+
+	public void updateInsurance(long id, InsuranceDto insurance) {
 		Optional<Insurance> insuranceData = insuranceRepository.findById(id);
 
 		if (insuranceData.isPresent()) {
-			Insurance _insurance = insuranceData.get();
-			_insurance.setProviderName(insurance.getProviderName());
-			_insurance.setInsuranceId(insurance.getInsuranceId());
-			_insurance.setGroupId(insurance.getGroupId());
-			_insurance.setContactNo(insurance.getContactNo());
-			_insurance.setEffectiveDate(insurance.getEffectiveDate());
-			_insurance.setExpirationDate(insurance.getEffectiveDate());
-			_insurance.setDetails(insurance.getDetails());
-			insuranceRepository.save(_insurance);
+			Insurance i  = insuranceData.get();
+			BeanUtils.copyProperties(insurance, i);
+			System.out.println("Updating Case " + i.toString());
+			insuranceRepository.saveAndFlush(i);
 		}
 	}
-	public void deleteInsurance(Long id) {
-	       insuranceRepository.deleteById(id);
-	   }
-	public void deleteAllInsurance() {
-	       insuranceRepository.deleteAll();
-	   }
-	 public ResponseEntity<Optional<Insurance>> findById() {
-	       try {
-	           Optional<Insurance> insurance = insuranceRepository.findById(null);
 
-	           if (insurance.isEmpty()) {
-	               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	           }
-	           return new ResponseEntity<>(insurance, HttpStatus.OK);
-	       } catch (Exception e) {
-	           return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	       }
-	   }
+	public void deleteInsurance(long id) {
+		insuranceRepository.deleteById(id);
+	}
 
+	
+	public ResponseEntity<InsuranceDto> findById(Long id) {
+		try {
+			Optional<Insurance> insurance = insuranceRepository.findById(id);
+
+			if (insurance.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			else {
+				InsuranceDto pdto = new InsuranceDto();
+				BeanUtils.copyProperties(insurance, pdto);
+			return new ResponseEntity<>(pdto, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }

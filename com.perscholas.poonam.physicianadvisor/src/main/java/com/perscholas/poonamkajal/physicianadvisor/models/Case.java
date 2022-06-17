@@ -31,27 +31,25 @@ public class Case {
 	private Long id;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	private Patient patient;
+	private Patient patient = new Patient();
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-
-	private Doctor doctor;
+    private Doctor doctor = new Doctor();
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-
-	private Hospital hospital;
+    private Hospital hospital = new Hospital();
+	
 	private Date dateOfAdmission;
 	private Date dateOfDischarge;
 	private String medicalRecordId;
 	private String diagnosis; // comma separated diagnosis
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-
-	private Insurance primaryInsurance;
+	private Insurance primaryInsurance = new Insurance();
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-
-	private Insurance secondaryInsurance;
+    private Insurance secondaryInsurance;
+	
 	private String attendingDoctorName;
 	private String attendingDoctorContactNo;
 	private String paReco; // Physician Advisor Doctor's recommendations for the case

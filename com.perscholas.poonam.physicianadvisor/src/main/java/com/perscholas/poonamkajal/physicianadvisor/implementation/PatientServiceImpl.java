@@ -3,18 +3,14 @@ package com.perscholas.poonamkajal.physicianadvisor.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.perscholas.poonamkajal.physicianadvisor.dto.CaseDto;
 import com.perscholas.poonamkajal.physicianadvisor.dto.PatientDto;
-import com.perscholas.poonamkajal.physicianadvisor.models.Case;
+import com.perscholas.poonamkajal.physicianadvisor.models.Address;
 import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
-import com.perscholas.poonamkajal.physicianadvisor.repository.CaseRepository;
 import com.perscholas.poonamkajal.physicianadvisor.repository.PatientRepository;
 
 @Service
@@ -46,8 +42,10 @@ public class PatientServiceImpl {
 
 	public void addPatient(PatientDto patient) {
 		Patient p = new Patient();
+		p.setAddress(new Address());
 		BeanUtils.copyProperties(patient, p);
-		patientRepository.save(p);
+		BeanUtils.copyProperties(patient.getAddress(), p.getAddress());
+        patientRepository.save(p);
 	}
 
 	public void updatePatient(long id, PatientDto patient) {
@@ -56,6 +54,7 @@ public class PatientServiceImpl {
 		if (patientData.isPresent()) {
 			Patient p  = patientData.get();
 			BeanUtils.copyProperties(patient, p);
+			BeanUtils.copyProperties(patient.getAddress(), p.getAddress());
 			System.out.println("Updating Case " + p.toString());
 			patientRepository.saveAndFlush(p);
 		}

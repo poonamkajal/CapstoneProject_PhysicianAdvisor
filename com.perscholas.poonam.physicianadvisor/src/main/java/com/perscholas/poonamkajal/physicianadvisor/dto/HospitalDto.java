@@ -2,9 +2,14 @@ package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class HospitalDto {
 	
-	@NotEmpty
 	private Long id;
 	@NotEmpty
 	private String name;

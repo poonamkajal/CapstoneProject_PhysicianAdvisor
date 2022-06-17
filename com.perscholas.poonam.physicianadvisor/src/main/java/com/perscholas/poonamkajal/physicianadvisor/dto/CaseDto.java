@@ -11,16 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CaseDto {
-	@NotEmpty
+	
 	private Long id;
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	@NotEmpty
 	private PatientDto patient;
 	
@@ -59,7 +53,13 @@ public class CaseDto {
 	@NotEmpty
 	private String caseStatus;
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public PatientDto getPatient() {
 		return patient;
 	}

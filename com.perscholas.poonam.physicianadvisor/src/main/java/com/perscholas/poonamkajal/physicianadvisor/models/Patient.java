@@ -26,8 +26,7 @@ public class Patient {
 	private Date dob;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Address address;
-	
+    private Address address = new Address();
 	
 	private String email;
 	private String contactNo;
@@ -35,6 +34,7 @@ public class Patient {
 	private Date createDate;
 	private String updatedBy;
 	private Date updateDate;
+	
 	public Long getId() {
 		return id;
 	}

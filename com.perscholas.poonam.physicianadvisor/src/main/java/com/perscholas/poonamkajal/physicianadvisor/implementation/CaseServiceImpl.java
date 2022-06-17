@@ -10,14 +10,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.perscholas.poonamkajal.physicianadvisor.dto.CaseDto;
+import com.perscholas.poonamkajal.physicianadvisor.models.Address;
 import com.perscholas.poonamkajal.physicianadvisor.models.Case;
+import com.perscholas.poonamkajal.physicianadvisor.models.Doctor;
+import com.perscholas.poonamkajal.physicianadvisor.models.Hospital;
+import com.perscholas.poonamkajal.physicianadvisor.models.Insurance;
+import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
 import com.perscholas.poonamkajal.physicianadvisor.repository.CaseRepository;
+import com.perscholas.poonamkajal.physicianadvisor.utils.CopyUtilities;
 
 @Service
 public class CaseServiceImpl {
 
 	@Autowired
 	private CaseRepository caseRepository;
+
+	@Autowired
+	private CopyUtilities copyUtilities;
 
 	public List<CaseDto> getAllCase() {
 
@@ -42,8 +51,10 @@ public class CaseServiceImpl {
 
 	public void addCase(CaseDto cases) {
 		Case c = new Case();
-		BeanUtils.copyProperties(cases, c);
-		caseRepository.save(c);
+		copyUtilities.copyCase(cases, c);
+
+        System.out.println("Saving hospital " + c.toString());
+        caseRepository.save(c);
 	}
 
 	public void updateCase(long id, CaseDto cases) {
@@ -51,9 +62,9 @@ public class CaseServiceImpl {
 
 		if (caseData.isPresent()) {
 			Case c = caseData.get();
-			BeanUtils.copyProperties(cases, c);
+			copyUtilities.copyCase(cases, c);
 			System.out.println("Updating Case " + c.toString());
-			caseRepository.saveAndFlush(c);
+			caseRepository.save(c);
 		}
 	}
 
@@ -71,7 +82,7 @@ public class CaseServiceImpl {
 			}
 			else {
 				CaseDto cdto = new CaseDto();
-				BeanUtils.copyProperties(cases, cdto);
+				copyUtilities.copyCaseDto(cases.get(), cdto);
 			return new ResponseEntity<>(cdto, HttpStatus.OK);
 			}
 		} catch (Exception e) {

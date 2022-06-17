@@ -1,8 +1,6 @@
 package com.perscholas.poonamkajal.physicianadvisor.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.perscholas.poonamkajal.physicianadvisor.dto.InsuranceDto;
 import com.perscholas.poonamkajal.physicianadvisor.implementation.InsuranceServiceImpl;
-import com.perscholas.poonamkajal.physicianadvisor.models.Insurance;
 
 @RestController
 @RequestMapping("/api")
@@ -24,55 +22,36 @@ public class InsuranceController {
 	private InsuranceServiceImpl insuranceService;
 	
 	@GetMapping("/insurance")
-	   public List<Insurance> getAllInsurance(@RequestParam(required = false) Long Id)         {
+	   public List<InsuranceDto> getAllInsurance(@RequestParam(required = false) Long Id){
 	       return insuranceService.getAllInsurance();
 	      
 	   }
 
 	@GetMapping("/insurance/{id}")
-	public Optional<Insurance> getInsuranceById(@PathVariable("id") Long id) {
+	public InsuranceDto getInsuranceById(@PathVariable("id") Long id) {
 
 		return insuranceService.getInsuranceById(id);
 	}
 
 	@PostMapping("/insurance")
-	public void createInsurance(@RequestBody Insurance insurance) {
+	public void createInsurance(@RequestBody InsuranceDto insurance) {
 		insuranceService.addInsurance(insurance);
 	}
 
 	@PutMapping("/insurance/{id}")
-	public void updateInsurance(@PathVariable("id") Long id, @RequestBody Insurance insurance) {
-		Optional<Insurance> insuranceData = insuranceService.getInsuranceById(id);
-
-		if (insuranceData.isPresent()) {
-			Insurance _insurance = insuranceData.get();
-			_insurance.setProviderName(insurance.getProviderName());
-			_insurance.setInsuranceId(insurance.getInsuranceId());
-			_insurance.setGroupId(insurance.getGroupId());
-			_insurance.setContactNo(insurance.getContactNo());
-			_insurance.setEffectiveDate(insurance.getEffectiveDate());
-			_insurance.setExpirationDate(insurance.getEffectiveDate());
-			_insurance.setDetails(insurance.getDetails());
-			
-			insuranceService.addInsurance(_insurance);
-		}
+	public void updateInsurance(@PathVariable("id") Long id, @RequestBody InsuranceDto i) {
+		System.out.println("Update Case " + i.toString());
+		insuranceService.updateInsurance(id, i);
 	}
-
+	
 	@DeleteMapping("/insurance/{id}")
 	public void deleteInsurance(@PathVariable("id") Long id) {
 		insuranceService.deleteInsurance(id);
 	}
 
-	@DeleteMapping("/insurance")
-	public void deleteAllInsurance() {
-
-		insuranceService.deleteAllInsurance();
-	}
-
 	@GetMapping("/insurance/id")
-	public ResponseEntity<Optional<Insurance>> findById() {
-		return insuranceService.findById();
+	public ResponseEntity<InsuranceDto> findById(@PathVariable("id") Long id) {
+		return insuranceService.findById(id);
 	}
-
 
 }
