@@ -54,8 +54,7 @@ public class DoctorDto {
 
 	@Override
 	public String toString() {
-		return "DoctorDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", speciality="
-				+ speciality + "]";
+		return id+ ", " +firstName + " "+lastName + ", "+speciality;
 	}
 
 	

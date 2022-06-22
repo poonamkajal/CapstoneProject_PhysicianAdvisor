@@ -32,7 +32,7 @@ public class PatientDto {
 	private String contactNo;
 	
 	@NotEmpty
-	private AddressDto address;
+	private AddressDto address = new AddressDto();
 	
 	@NotEmpty
 	private String createdBy;
@@ -138,13 +138,7 @@ public class PatientDto {
 
 	@Override
 	public String toString() {
-		return "PatientDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", email=" + email + ", contactNo=" + contactNo + ", address=" + address + ", createdBy=" + createdBy
-				+ ", createDate=" + createDate + ", updatedBy=" + updatedBy + ", updateDate=" + updateDate + "]";
+		return firstName + " "+lastName;
 	}
 
-	
-	
-
-	
 }

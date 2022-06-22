@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,13 +32,16 @@ public class Case {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="patient_id", nullable=false)
 	private Patient patient = new Patient();
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name="doctor_id", nullable=false)
     private Doctor doctor = new Doctor();
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name="hospital_id", nullable=false)
     private Hospital hospital = new Hospital();
 	
 	private Date dateOfAdmission;
@@ -44,10 +49,10 @@ public class Case {
 	private String medicalRecordId;
 	private String diagnosis; // comma separated diagnosis
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Insurance primaryInsurance = new Insurance();
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Insurance secondaryInsurance;
 	
 	private String attendingDoctorName;
@@ -108,13 +113,13 @@ public class Case {
 	public void setPrimaryInsurance(Insurance primaryInsurance) {
 		this.primaryInsurance = primaryInsurance;
 	}
-	public Insurance getSecondaryInsurance() {
+/*	public Insurance getSecondaryInsurance() {
 		return secondaryInsurance;
 	}
 	public void setSecondaryInsurance(Insurance secondaryInsurance) {
 		this.secondaryInsurance = secondaryInsurance;
 	}
-	public String getAttendingDoctorName() {
+*/	public String getAttendingDoctorName() {
 		return attendingDoctorName;
 	}
 	public void setAttendingDoctorName(String attendingDoctorName) {
@@ -143,7 +148,7 @@ public class Case {
 		return "Case [id=" + id + ", patient=" + patient + ", doctor=" + doctor + ", hospital=" + hospital
 				+ ", dateOfAdmission=" + dateOfAdmission + ", dateOfDischarge=" + dateOfDischarge + ", medicalRecordId="
 				+ medicalRecordId + ", diagnosis=" + diagnosis + ", primaryInsurance=" + primaryInsurance
-				+ ", secondaryInsurance=" + secondaryInsurance + ", attendingDoctorName=" + attendingDoctorName
+				+ ", secondaryInsurance=" + ", attendingDoctorName=" + attendingDoctorName
 				+ ", attendingDoctorContactNo=" + attendingDoctorContactNo + ", paReco=" + paReco + ", caseStatus="
 				+ caseStatus + "]";
 	}

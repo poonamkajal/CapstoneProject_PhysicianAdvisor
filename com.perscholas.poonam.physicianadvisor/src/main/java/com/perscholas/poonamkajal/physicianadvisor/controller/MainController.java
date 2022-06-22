@@ -7,18 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String root() {
         return "index";
+    }
+    @GetMapping("/about")
+    public String about(Model model) {
+        return "about";
+    }
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        return "contact";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
-    }
-
-    @GetMapping("/user")
-    public String userIndex() {
-        return "user/index";
     }
 }

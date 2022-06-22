@@ -18,7 +18,7 @@ public class HospitalDto {
 	private String facilityName;
 	
 	@NotEmpty
-	private AddressDto address;
+	private AddressDto address = new AddressDto();
 
 	public Long getId() {
 		return id;

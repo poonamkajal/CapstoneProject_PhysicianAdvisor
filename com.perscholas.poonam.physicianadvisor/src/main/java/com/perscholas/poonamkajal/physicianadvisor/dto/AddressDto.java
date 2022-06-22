@@ -88,8 +88,7 @@ public class AddressDto {
 
 	@Override
 	public String toString() {
-		return "AddressDto [id=" + id + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", city="
-				+ city + ", state=" + state + ", zipcode=" + zipcode + ", country=" + country + "]";
+		return addressLine1  + (addressLine2 == null? "" :  (" " + addressLine2)) + ", " + city +  ", " + state +  " - " + zipcode;
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.perscholas.poonamkajal.physicianadvisor.security;
 
 import java.util.Arrays;
 
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,6 @@ import com.perscholas.poonamkajal.physicianadvisor.services.UserService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-   
    @Autowired
    private UserService userService;
 
@@ -70,12 +70,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    static BCryptPasswordEncoder passwordEncoder() {
+     BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
    @Bean
-   public DaoAuthenticationProvider authenticationProvider(){
+   DaoAuthenticationProvider authenticationProvider(){
        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
        auth.setUserDetailsService(userService);
        auth.setPasswordEncoder(passwordEncoder());

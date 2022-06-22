@@ -15,16 +15,14 @@ public class CaseDto {
 	private Long id;
 	
 	
-	@NotEmpty
-	private PatientDto patient;
+	private PatientDto patient = new PatientDto();
 	
-	@NotEmpty
-	private DoctorDto doctor;
+	@NotEmpty(message="Doctor cannot be blank")
+	private DoctorDto doctor = new DoctorDto();
 	
 	@NotEmpty
 	private Date dateOfAdmission;
 	
-	@NotEmpty
 	private Date dateOfDischarge;
 	
 	@NotEmpty
@@ -34,12 +32,12 @@ public class CaseDto {
 	private String diagnosis;
 	
 	@NotEmpty
-	private HospitalDto hospital;
+	private HospitalDto hospital = new HospitalDto();
 	
 	@NotEmpty
-	private InsuranceDto primaryInsurance;
+	private InsuranceDto primaryInsurance = new InsuranceDto();
 	
-	private InsuranceDto secondaryInsurance;
+	private InsuranceDto secondaryInsurance = new InsuranceDto();
 
 	@NotEmpty
 	private String attendingDoctorName;

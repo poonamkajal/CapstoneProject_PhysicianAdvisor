@@ -103,13 +103,7 @@ public class Patient {
 	}
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", address=" + address +", email=" + email + ", contactNo=" + contactNo + ", createdBy=" + createdBy
-				+ ", createDate=" + createDate + ", updatedBy=" + updatedBy + ", updateDate=" + updateDate
-				+ ", getId()=" + getId() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
-				+ ", getDob()=" + getDob() + ", getAddress()=" + getAddress() +", getEmail()=" + getEmail()
-				+ ", getContactNo()=" + getContactNo() + ", getCreatedBy()=" + getCreatedBy() + ", getCreateDate()="
-				+ getCreateDate() + ", getUpdatedBy()=" + getUpdatedBy() + ", getUpdateDate()=" + getUpdateDate() + "]";
-	}
+		return firstName + lastName;
 	
+}
 }

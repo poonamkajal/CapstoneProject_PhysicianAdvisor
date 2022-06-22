@@ -3,19 +3,12 @@ package com.perscholas.poonamkajal.physicianadvisor.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.perscholas.poonamkajal.physicianadvisor.dto.CaseDto;
-import com.perscholas.poonamkajal.physicianadvisor.models.Address;
 import com.perscholas.poonamkajal.physicianadvisor.models.Case;
-import com.perscholas.poonamkajal.physicianadvisor.models.Doctor;
-import com.perscholas.poonamkajal.physicianadvisor.models.Hospital;
-import com.perscholas.poonamkajal.physicianadvisor.models.Insurance;
-import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
 import com.perscholas.poonamkajal.physicianadvisor.repository.CaseRepository;
 import com.perscholas.poonamkajal.physicianadvisor.utils.CopyUtilities;
 
@@ -33,7 +26,7 @@ public class CaseServiceImpl {
 		List<CaseDto> caseDtos = new ArrayList<CaseDto>();
 		caseRepository.findAll().forEach(c -> {
 			CaseDto cdto = new CaseDto();
-			BeanUtils.copyProperties(c, cdto);
+			copyUtilities.copyCaseDto(c, cdto);
 			caseDtos.add(cdto);
 		});
 
@@ -44,7 +37,7 @@ public class CaseServiceImpl {
 		Optional<Case> c = caseRepository.findById(id);
 		CaseDto cdto = new CaseDto();
 		if (c.isPresent()) {
-			BeanUtils.copyProperties(c.get(), cdto);
+			copyUtilities.copyCaseDto(c.get(), cdto);
 		}
 		return cdto;
 	}
@@ -64,7 +57,7 @@ public class CaseServiceImpl {
 			Case c = caseData.get();
 			copyUtilities.copyCase(cases, c);
 			System.out.println("Updating Case " + c.toString());
-			caseRepository.save(c);
+			caseRepository.saveAndFlush(c);
 		}
 	}
 
