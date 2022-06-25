@@ -45,14 +45,14 @@ public class PatientServiceImpl {
 		p.setAddress(new Address());
 		BeanUtils.copyProperties(patient, p);
 		BeanUtils.copyProperties(patient.getAddress(), p.getAddress());
-        patientRepository.save(p);
+		patientRepository.save(p);
 	}
 
 	public void updatePatient(long id, PatientDto patient) {
 		Optional<Patient> patientData = patientRepository.findById(id);
 
 		if (patientData.isPresent()) {
-			Patient p  = patientData.get();
+			Patient p = patientData.get();
 			BeanUtils.copyProperties(patient, p);
 			BeanUtils.copyProperties(patient.getAddress(), p.getAddress());
 			System.out.println("Updating Case " + p.toString());
@@ -64,25 +64,19 @@ public class PatientServiceImpl {
 		patientRepository.deleteById(id);
 	}
 
-	
 	public ResponseEntity<PatientDto> findById(Long id) {
 		try {
 			Optional<Patient> patient = patientRepository.findById(id);
 
 			if (patient.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			else {
+			} else {
 				PatientDto pdto = new PatientDto();
 				BeanUtils.copyProperties(patient, pdto);
-			return new ResponseEntity<>(pdto, HttpStatus.OK);
+				return new ResponseEntity<>(pdto, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	}
-
-
-
-
+}

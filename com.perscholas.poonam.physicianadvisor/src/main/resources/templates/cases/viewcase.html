@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Update Case</title>
+	<title>View Case</title>
 	<!-- Bootstrap core CSS-->
 	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/4d45c4ec1e.js" crossorigin="anonymous"></script>
@@ -31,16 +31,17 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
-				<h3 style="color:#30969c; margin-top: 10px" align="center">Update Case</h3>
+				<h3 style="color:#30969c; margin-top: 10px" align="center">View Case</h3>
 
 				<div>
-					<form action="#" th:action="@{/cases/save}" th:object="${cases}" method="POST">
+					<form action="#" th:action="@{/cases/viewcase}" th:object="${cases}" method="GET">
 
 						<table align="center" width=50%>
 						<tr>
 
 								<td>
-									<dt for="firstName">Patient First Name:</dt><input type="text" th:field="*{patient.firstName}"
+									<dt for="firstName">Patient First Name:</dt>
+									<input disabled="true" type="text" th:field="*{patient.firstName}"
 											class="form-control" required="" placeholder="Patient First Name">
 								</td>
 							</tr>
@@ -48,7 +49,7 @@
 
 								<td>
 									<dt for="lastName">Patient Last Name:</dt>
-										<input type="text" th:field="*{patient.lastName}" class="form-control"
+										<input disabled="true" type="text" th:field="*{patient.lastName}" class="form-control"
 											required="" placeholder="Patient Last name">
 
 
@@ -57,135 +58,139 @@
 							<tr>
 									
 
-								<td><dt for="dob">Patient DOB:</dt><input type="text"
+								<td><dt for="dob">Patient DOB:</dt>
+								<input disabled="true" type="text"
 										th:field="*{patient.dob}" class="form-control" required=""
 										placeholder="Date of Birth"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="email">Patient Email:</dt><input type="text"
+								<td><dt for="email">Patient Email:</dt>
+								<input disabled="true" type="text"
 										th:field="*{patient.email}" class="form-control" required=""
 										placeholder="Patient Email">
 								</td>
 							</tr>
 							<tr>
 
-								<td><dt for="contactNo">Patient Contact No:</dt><input
-										type="text" th:field="*{patient.contactNo}" class="form-control" required=""
+								<td><dt for="contactNo">Patient Contact No:</dt>
+								<input disabled="true" type="text" th:field="*{patient.contactNo}" class="form-control" required=""
 										placeholder="Patient ContactNo"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="address">Patient Address:</dt><input
-										th:field="*{patient.address.addressLine1}" class="form-control" required=""
+								<td><dt for="address">Patient Address:</dt>
+								<input disabled="true" th:field="*{patient.address.addressLine1}" class="form-control" required=""
 										placeholder="Patient Address" /></td>
 							</tr>
 
 							<tr>
 
 
-								<td><dt for="city">Patient City:</dt><input th:field="*{patient.address.city}" class="form-control" required=""
+								<td><dt for="city">Patient City:</dt>
+								<input disabled="true" th:field="*{patient.address.city}" class="form-control" required=""
 										placeholder="Patient City" /></td>
 							</tr>
 							<tr>
 
 
-								<td><dt for="state">Patient State:</dt><input th:field="*{patient.address.state}" class="form-control" required=""
+								<td><dt for="state">Patient State:</dt>
+								<input disabled="true" th:field="*{patient.address.state}" class="form-control" required=""
 										placeholder="Patient State" /></td>
 							</tr>
 							<tr>
-								<td><dt for="zipcode">Patient Zip Code:</dt><input th:field="*{patient.address.zipcode}" class="form-control" required=""
+								<td><dt for="zipcode">Patient Zip Code:</dt>
+								<input disabled="true" th:field="*{patient.address.zipcode}" class="form-control" required=""
 										placeholder="Patient Zip Code" /></td>
 							</tr>
 
 							<tr>
-								<td><dt for="country">Patient Country:</dt><input th:field="*{patient.address.country}" class="form-control" required=""
+								<td><dt for="country">Patient Country:</dt>
+								<input disabled="true" th:field="*{patient.address.country}" class="form-control" required=""
 										placeholder="Patient Country" /></td>
 							</tr>
 
 
 							<tr>
 								<td>
-									<dt for="doctor">Select Doctor:</dt>
-									<select class="form-control" th:field="*{doctor.id}" id="doctorList"
-										required="true">
-										<option value="">
-											<---Select a Doctor--->
-										</option>
-										<option th:each="casedoctor : ${doctors}" th:value="${casedoctor.id}"
-											th:text="${casedoctor}" th:selected="${casedoctor.id==doctorId}">
-										</option>
-									</select>
+									<dt for="doctor">Doctor:</dt>
+									<input disabled="true" th:field="*{doctor}" class="form-control" required=""
+										placeholder="Doctor" />
 								</td>
 							</tr>
 
 							<tr>
 								<td>
-									<dt for="hospital">Select Hospital:</dt>
-									<select class="form-control" th:field="*{hospital.id}" id="hospitalList">
-										<option value="">
-											<-----Select the Hospital----->
-										</option>
-										<option th:each="casehospital : ${hospitals}" th:value="${casehospital.id}"
-											th:text="${casehospital}" th:selected="${casehospital.id==hospitalId}">
-										</option>
-									</select>
+									<dt for="hospital">Hospital:</dt>
+									<input disabled="true" th:field="*{hospital}" id="hospital" class="form-control" required=""
+										placeholder="Hospital" />
 								</td>
 							</tr>
 
 
 							<tr>
-								<td><dt for="dateofadmission">Date of Admission:</dt><input th:field="*{dateOfAdmission}" class="form-control" required=""
+								<td><dt for="dateofadmission">Date of Admission:</dt>
+								<input disabled="true" th:field="*{dateOfAdmission}" class="form-control" required=""
 										placeholder="Date of Admission" /></td>
 							</tr>
 							<tr>
 
-								<td><dt for="dateofdischarge">Date of Discharge:</dt><input type="text" th:field="*{dateOfDischarge}" class="form-control" required=""
+								<td><dt for="dateofdischarge">Date of Discharge:</dt>
+								<input disabled="true" type="text" th:field="*{dateOfDischarge}" class="form-control" required=""
 										placeholder="Date of Discharge"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="medicalRecordId">Medical Record Id:</dt><input type="text" th:field="*{medicalRecordId}" class="form-control" required=""
+								<td><dt for="medicalRecordId">Medical Record Id:</dt>
+								<input disabled="true" type="text" th:field="*{medicalRecordId}" class="form-control" required=""
 										placeholder="Medical Record Id"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="diagnosis">Diagnosis:</dt><input type="text" th:field="*{diagnosis}" class="form-control" required=""
+								<td><dt for="diagnosis">Diagnosis:</dt>
+								<input disabled="true" type="text" th:field="*{diagnosis}" class="form-control" required=""
 										placeholder="Diagnosis"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="providerName">Insurance Provider Name</dt><input type="text" th:field="*{primaryInsurance.providerName}" class="form-control"
+								<td><dt for="providerName">Insurance Provider Name</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.providerName}" class="form-control"
 										required="" placeholder="Insurance Provider Name"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="insuranceId">Insurance Id:</dt><input type="text" th:field="*{primaryInsurance.insuranceId}" class="form-control"
+								<td><dt for="insuranceId">Insurance Id:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.insuranceId}" class="form-control"
 										required="" placeholder="Insurance Id"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="Insurance Group Id">Insurance Group Id:</dt><input type="text" th:field="*{primaryInsurance.groupId}" class="form-control"
+								<td><dt for="Insurance Group Id">Insurance Group Id:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.groupId}" class="form-control"
 										required="" placeholder="Insurance Group Id"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="effectiveDate">Insurance Effective Date:</dt><input type="text" th:field="*{primaryInsurance.effectiveDate}" class="form-control"
+								<td><dt for="effectiveDate">Insurance Effective Date:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.effectiveDate}" class="form-control"
 										required="" placeholder="Insurance Effective Date"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="expirationDate">Insurance Expiration Date:</dt><input type="text" th:field="*{primaryInsurance.expirationDate}"
+								<td><dt for="expirationDate">Insurance Expiration Date:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.expirationDate}"
 										class="form-control" required="" placeholder="Insurance Expiration Date"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="contactNo">Date of Discharge:</dt><input type="text" th:field="*{primaryInsurance.contactNo}" class="form-control"
+								<td><dt for="contactNo">Date of Discharge:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.contactNo}" class="form-control"
 										required="" placeholder="Insurance Contact No"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="details">Insurance Details:</dt><input type="text" th:field="*{primaryInsurance.details}" class="form-control"
+								<td><dt for="details">Insurance Details:</dt>
+								<input disabled="true" type="text" th:field="*{primaryInsurance.details}" class="form-control"
 										required="" placeholder="Insurance Details"></td>
 							</tr>
 
@@ -196,26 +201,24 @@
 							</tr>
 							<tr>
 
-								<td><dt for="attendingDoctorContactNo">Attending Doctor Contact No:</dt><input type="text" th:field="*{attendingDoctorContactNo}" class="form-control"
+								<td><dt for="attendingDoctorContactNo">Attending Doctor Contact No:</dt>
+								<input disabled="true" type="text" th:field="*{attendingDoctorContactNo}" class="form-control"
 										required="" placeholder="Attending Doctor Contact No"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="paReco">Physician Advisor Recommendation:</dt><input type="text" th:field="*{paReco}" class="form-control" required=""
+								<td><dt for="paReco">Physician Advisor Recommendation:</dt>
+								<input disabled="true" type="text" th:field="*{paReco}" class="form-control" required=""
 										placeholder="Physician Advisor Recommendation"></td>
 							</tr>
 							<tr>
 
-								<td><dt for="caseStatus">Case Status:</dt><input type="text" th:field="*{caseStatus}" class="form-control" required=""
+								<td><dt for="caseStatus">Case Status:</dt>
+								<input disabled="true" type="text" th:field="*{caseStatus}" class="form-control" required=""
 										placeholder="Case Status"></td>
 							</tr>
 
-							<tr> 
 							
-								<td colspan="2" align="center" sec:authorize="hasAnyRole('ADMIN','DOCTOR')"><br><input class="btn btn-lg" type="submit"
-										value="Submit" style="background-color:#30969c"><br></td>
-
-							</tr>
 
 						</table>
 					</form>

@@ -19,14 +19,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hospital {
-	   @Id
-	   @GeneratedValue(strategy = GenerationType.AUTO)
-	   private Long id;
-	   private String name;
-	   private String facilityName;
-		
-	   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-       private Address address = new Address();
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String hospitalName;
+	private String facilityName;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Address address = new Address();
 
 	public Long getId() {
 		return id;
@@ -34,14 +34,6 @@ public class Hospital {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getFacilityName() {
@@ -60,10 +52,18 @@ public class Hospital {
 		this.address = address;
 	}
 
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + ", name=" + name + ", facilityName=" + facilityName + ", address=" + address
-				+ "]";
+		return "Hospital [id=" + id + ", hospitalName=" + hospitalName + ", facilityName=" + facilityName + ", address="
+				+ address + "]";
 	}
 
 }

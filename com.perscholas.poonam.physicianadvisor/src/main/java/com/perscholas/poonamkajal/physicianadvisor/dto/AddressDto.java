@@ -1,32 +1,37 @@
 package com.perscholas.poonamkajal.physicianadvisor.dto;
 
+
+import javax.persistence.Column;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressDto {
-	
+
 	private Long id;
-	
+
 	@NotEmpty
+	@Column(name="Address 1")
+
 	private String addressLine1;
 	
-	
-	private String addressLine2;
-	
+    private String addressLine2;
+
 	@NotEmpty
 	private String city;
-	
+
 	@NotEmpty
-	private String state; //2-letter state code
-	
+	private String state; // 2-letter state code
+
 	@NotEmpty
 	private String zipcode; // 5-digit zip code
-	
+
 	@NotEmpty
 	private String country; // Always USA
 
@@ -88,7 +93,8 @@ public class AddressDto {
 
 	@Override
 	public String toString() {
-		return addressLine1  + (addressLine2 == null? "" :  (" " + addressLine2)) + ", " + city +  ", " + state +  " - " + zipcode;
+		return addressLine1 + (addressLine2 == null ? "" : (" " + addressLine2)) + ", " + city + ", " + state + " - "
+				+ zipcode;
 	}
-	
+
 }

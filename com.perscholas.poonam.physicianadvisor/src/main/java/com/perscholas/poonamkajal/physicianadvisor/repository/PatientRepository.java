@@ -6,4 +6,6 @@ import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
+	Patient findByEmail(String email);
+
 }

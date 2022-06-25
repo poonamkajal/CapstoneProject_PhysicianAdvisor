@@ -3,24 +3,18 @@ package com.perscholas.poonamkajal.physicianadvisor.implementation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.perscholas.poonamkajal.physicianadvisor.dto.DoctorDto;
 import com.perscholas.poonamkajal.physicianadvisor.dto.HospitalDto;
-import com.perscholas.poonamkajal.physicianadvisor.models.Address;
-import com.perscholas.poonamkajal.physicianadvisor.models.Doctor;
 import com.perscholas.poonamkajal.physicianadvisor.models.Hospital;
-import com.perscholas.poonamkajal.physicianadvisor.repository.DoctorRepository;
 import com.perscholas.poonamkajal.physicianadvisor.repository.HospitalRepository;
 import com.perscholas.poonamkajal.physicianadvisor.utils.CopyUtilities;
 
 @Service
 public class HospitalServiceImpl {
+
 	@Autowired
 	private HospitalRepository hospitalRepository;
 
@@ -58,7 +52,7 @@ public class HospitalServiceImpl {
 		Optional<Hospital> hospitalData = hospitalRepository.findById(id);
 
 		if (hospitalData.isPresent()) {
-			Hospital h  = hospitalData.get();
+			Hospital h = hospitalData.get();
 			copyUtilities.copyHospital(hospital, h);
 			System.out.println("Updating Hospital " + h.toString());
 			hospitalRepository.saveAndFlush(h);
@@ -69,24 +63,19 @@ public class HospitalServiceImpl {
 		hospitalRepository.deleteById(id);
 	}
 
-	
 	public ResponseEntity<HospitalDto> findById(Long id) {
 		try {
 			Optional<Hospital> hospital = hospitalRepository.findById(id);
 
 			if (hospital.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			else {
+			} else {
 				HospitalDto hdto = new HospitalDto();
 				copyUtilities.copyHospitalDto(hospital.get(), hdto);
-			return new ResponseEntity<>(hdto, HttpStatus.OK);
+				return new ResponseEntity<>(hdto, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	}
-
-
-
+}

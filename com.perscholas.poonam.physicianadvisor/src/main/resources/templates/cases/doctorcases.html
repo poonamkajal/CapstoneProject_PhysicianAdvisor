@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Doctors</title>
+	<title>Doctor Case List</title>
 	<!-- Bootstrap core CSS-->
 	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,13 +21,14 @@
 
 <body>
 
-	<body id="page-top" style="background-image: url('/images/abstract-medical-wallpaper-template-design_53876-61802.webp');">
-			<div th:replace="fragments/adminpage :: header"></div>
+	<body id="page-top"
+		style="background-image: url('/images/abstract-medical-wallpaper-template-design_53876-61802.webp');">
+		<div th:replace="fragments/adminpage :: header"></div>
 
 		<div id="wrapper">
 
-		<!-- Sidebar -->
-		<div th:replace="fragments/sidebar :: sidebar"></div>
+			<!-- Sidebar -->
+			<div th:replace="fragments/sidebar :: sidebar"></div>
 
 			<div id="content-wrapper">
 
@@ -35,50 +36,48 @@
 
 					<ol class="breadcrumb" style="background-color:#30969c">
 						<li class="breadcrumb-item">
-							<a th:href="@{/doctor/add}" style="color:black">Dashboard</a>
+							<a th:href="@{/caselist/add}" style="color:black">Dashboard</a>
 						</li>
-						<li class="breadcrumb-item active">Overview</li>
+						<li class="breadcrumb-item active" style="color:white">Overview</li>
 					</ol>
 
 					<div id="content-wrapper">
 						<div class="card mb-3">
 
-							<h3 align="center" style="color:#30969c; margin-top: 10px">Hospital List</h3>
+							<h3 align="center" style="color:#30969c; margin-top: 10px">Case List</h3>
 
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
-												<th>Id</th>
-												<th>Hospital Name</th>
-												<th>Facility Name</th>
-												<th>Address</th>
+												<th>Case Id</th>
+												<th>Patient First Name</th>
+												<th>Patient Last Name</th>
+												<th>Diagnosis</th>
+												<th>Admission Date</th>
 												<th>Action</th>
-
 											</tr>
 										</thead>
 										<tfoot>
 											<tr>
-												<th>Id</th>
-												<th>Hospital Name</th>
-												<th>Facility Name</th>
-												<th>Address</th>
+												<th>Case Id</th>
+												<th>Patient First Name</th>
+												<th>Patient Last Name</th>
+												<th>Diagnosis</th>
+												<th>Admission Date</th>
 												<th>Action</th>
 											</tr>
 											<tbody>
-												<tr th:each="hospital:${hospitals}">
+												<tr th:each="cases:${doccaselist}">
 
-													<td th:text="${hospital.id}" />
-													<td th:text="${hospital.hospitalName}" />
-													<td th:text="${hospital.facilityName}" />
-													<td th:text="${hospital.address}" />												
-													<td> <a th:href="@{/hospital/update/{id}(id=${hospital.id})}"
-															class="btn btn-info"><i
-																class="fa fa-edit"></i></a>
-														<a th:href="@{/hospital/delete/{id}(id=${hospital.id})}"
-															class="btn btn-danger"><i class="fa fa-remove"></i></a>
-
+													<td th:text="${cases.id}" />
+													<td th:text="${cases.patient.firstName}" />
+													<td th:text="${cases.patient.lastName}" />
+													<td th:text="${cases.diagnosis}" />
+													<td th:text="${cases.dateOfAdmission}" />
+													<td> <a th:href="@{/cases/update/{id}(id=${cases.id})}"
+															class="btn btn-info"><i class="fa fa-edit"></i></a>
 
 												</tr>
 
@@ -91,7 +90,8 @@
 						<!-- /.container-fluid -->
 
 						<!-- Sticky Footer -->
-					<div th:replace="fragments/adminpage :: footer"></div>
+						<div th:replace="fragments/adminpage :: footer"></div>
+
 
 					</div>
 					<!-- /.content-wrapper -->
@@ -110,6 +110,7 @@
 
 
 		<div th:replace="fragments/adminpage :: logout"></div>
+
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="/vendor/jquery/jquery.min.js"></script>
@@ -130,4 +131,5 @@
 		<script src="/vendor/js/demo/datatables-demo.js"></script>
 		<script src="/vendor/js/demo/chart-area-demo.js"></script>
 	</body>
+
 </html>

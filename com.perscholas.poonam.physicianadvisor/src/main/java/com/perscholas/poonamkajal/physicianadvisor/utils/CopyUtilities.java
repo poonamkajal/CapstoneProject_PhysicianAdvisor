@@ -12,17 +12,17 @@ import com.perscholas.poonamkajal.physicianadvisor.models.Patient;
 
 @Service
 public class CopyUtilities {
-	
+
 	public void copyHospital(HospitalDto source, Hospital target) {
 		BeanUtils.copyProperties(source, target);
-		BeanUtils.copyProperties(source.getAddress(), target.getAddress());		
+		BeanUtils.copyProperties(source.getAddress(), target.getAddress());
 	}
 
 	public void copyPatient(PatientDto source, Patient target) {
 		BeanUtils.copyProperties(source, target);
-		BeanUtils.copyProperties(source.getAddress(), target.getAddress());		
+		BeanUtils.copyProperties(source.getAddress(), target.getAddress());
 	}
-	
+
 	public void copyCase(CaseDto source, Case target) {
 		BeanUtils.copyProperties(source, target);
 		BeanUtils.copyProperties(source.getDoctor(), target.getDoctor());
@@ -33,14 +33,14 @@ public class CopyUtilities {
 
 	public void copyHospitalDto(Hospital source, HospitalDto target) {
 		BeanUtils.copyProperties(source, target);
-		BeanUtils.copyProperties(source.getAddress(), target.getAddress());		
+		BeanUtils.copyProperties(source.getAddress(), target.getAddress());
 	}
 
 	public void copyPatientDto(Patient source, PatientDto target) {
 		BeanUtils.copyProperties(source, target);
-		BeanUtils.copyProperties(source.getAddress(), target.getAddress());		
+		BeanUtils.copyProperties(source.getAddress(), target.getAddress());
 	}
-	
+
 	public void copyCaseDto(Case source, CaseDto target) {
 		BeanUtils.copyProperties(source, target);
 		BeanUtils.copyProperties(source.getDoctor(), target.getDoctor());

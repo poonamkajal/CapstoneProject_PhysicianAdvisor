@@ -5,5 +5,6 @@ import com.perscholas.poonamkajal.physicianadvisor.models.Insurance;
 
 public interface InsuranceService {
 	Insurance findById(Long Id);
-	   Insurance save(InsuranceDto insurance);
+
+	Insurance save(InsuranceDto insurance);
 }

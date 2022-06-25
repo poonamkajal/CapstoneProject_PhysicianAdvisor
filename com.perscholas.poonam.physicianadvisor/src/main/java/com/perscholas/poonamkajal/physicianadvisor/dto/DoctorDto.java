@@ -1,5 +1,6 @@
 package com.perscholas.poonamkajal.physicianadvisor.dto;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,16 +10,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorDto {
-	
+
 	private Long id;
 	@NotEmpty
-    private String firstName;
+	private String firstName;
 
 	@NotEmpty
 	private String lastName;
 
 	@NotEmpty
 	private String speciality;
+
+	@NotEmpty
+	@Email
+	private String email;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -54,10 +67,7 @@ public class DoctorDto {
 
 	@Override
 	public String toString() {
-		return id+ ", " +firstName + " "+lastName + ", "+speciality;
+		return "ID:" + id + "   " + firstName + " " + lastName;
 	}
 
-	
-	
-	
 }

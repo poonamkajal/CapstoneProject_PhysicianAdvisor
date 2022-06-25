@@ -41,7 +41,7 @@ public class DoctorServiceImpl {
 	public void addDoctor(DoctorDto doctor) {
 		Doctor d = new Doctor();
 		BeanUtils.copyProperties(doctor, d);
-		System.out.println("Saving doctor" + d);		
+		System.out.println("Saving doctor" + d);
 		doctorRepository.save(d);
 	}
 
@@ -49,7 +49,7 @@ public class DoctorServiceImpl {
 		Optional<Doctor> doctorData = doctorRepository.findById(id);
 
 		if (doctorData.isPresent()) {
-			Doctor d  = doctorData.get();
+			Doctor d = doctorData.get();
 			BeanUtils.copyProperties(doctor, d);
 			System.out.println("Updating Case " + d.toString());
 			doctorRepository.saveAndFlush(d);
@@ -60,29 +60,20 @@ public class DoctorServiceImpl {
 		doctorRepository.deleteById(id);
 	}
 
-	
 	public ResponseEntity<DoctorDto> findById(Long id) {
 		try {
 			Optional<Doctor> doctor = doctorRepository.findById(id);
 
 			if (doctor.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			else {
+			} else {
 				DoctorDto ddto = new DoctorDto();
 				BeanUtils.copyProperties(doctor, ddto);
-			return new ResponseEntity<>(ddto, HttpStatus.OK);
+				return new ResponseEntity<>(ddto, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
-	
-		}
-
-
-
-
-
-
+}

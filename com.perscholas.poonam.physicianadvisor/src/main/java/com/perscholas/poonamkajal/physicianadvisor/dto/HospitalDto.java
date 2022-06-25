@@ -5,18 +5,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class HospitalDto {
-	
+
 	private Long id;
 	@NotEmpty
-	private String name;
-	
+	private String hospitalName;
+
 	@NotEmpty
 	private String facilityName;
-	
+
 	@NotEmpty
 	private AddressDto address = new AddressDto();
 
@@ -28,12 +29,12 @@ public class HospitalDto {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getHospitalName() {
+		return hospitalName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
 	}
 
 	public String getFacilityName() {
@@ -54,8 +55,7 @@ public class HospitalDto {
 
 	@Override
 	public String toString() {
-		return "HospitalDto [id=" + id + ", name=" + name + ", facilityName=" + facilityName + ", address=" + address
-				+ "]";
+		return "ID:" + id + "   " + hospitalName;
 	}
-	
+
 }

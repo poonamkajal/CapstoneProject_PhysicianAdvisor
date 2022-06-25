@@ -1,0 +1,62 @@
+		<ul class="sidebar navbar-nav" th:fragment="sidebar">
+
+			<li sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/doctor/add}">
+
+					<i class="fa-solid fa-user-doctor"></i>
+					<span>Add Doctor</span>
+				</a>
+			</li>
+			<li sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/doctor/alldoctors}">
+
+					<i class="fa-solid fa-user-doctor"></i>
+					<span>Doctor List</span>
+				</a>
+			</li>
+
+
+			<li sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/hospital/addhospital}">
+
+					<i class="fa-solid fa-hospital"></i>
+					<span>Add Hospital</span>
+				</a>
+			</li>
+
+			<li sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/hospital/allhospitals}">
+
+					<i class="fa-solid fa-hospital"></i>
+					<span>Hospital List</span>
+				</a>
+			</li>
+			<li sec:authorize="hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/cases/addcase}">
+
+					<i class="fa-solid fa-suitcase-medical"></i>
+					<span>Add Case</span>
+				</a>
+			</li>
+			<li sec:authorize="hasRole('ADMIN')" class="nav-item ">
+				<a class="nav-link " th:href="@{/cases/allcases}">
+
+					<i class="fa-solid fa-suitcase-medical"></i>
+					<span>Case List</span>
+				</a>
+			</li>
+			<li sec:authorize="hasRole('DOCTOR')" class="nav-item ">
+				<a class="nav-link " th:href="@{/cases/doctorcases}">
+
+					<i class="fa-solid fa-suitcase-medical"></i>
+					<span>My Case List</span>
+				</a>
+			</li>
+			<li sec:authorize="hasRole('USER')" class="nav-item ">
+				<a class="nav-link " th:href="@{/cases/usercases}">
+
+					<i class="fa-solid fa-suitcase-medical"></i>
+					<span>My Case List</span>
+				</a>
+			</li>
+		</ul>

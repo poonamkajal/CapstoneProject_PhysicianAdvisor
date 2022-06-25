@@ -2,12 +2,16 @@ package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @AllArgsConstructor
@@ -17,33 +21,37 @@ public class PatientDto {
 
 	@NotEmpty
 	private String firstName;
-	
+
 	@NotEmpty
 	private String lastName;
-	
+
 	@NotEmpty
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
+	@Past
 	private Date dob;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
-	
+
 	@NotEmpty
 	private String contactNo;
-	
+
 	@NotEmpty
 	private AddressDto address = new AddressDto();
-	
+
 	@NotEmpty
 	private String createdBy;
-	
+
 	@NotEmpty
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createDate;
-	
+
 	@NotEmpty
 	private String updatedBy;
-	
+
 	@NotEmpty
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updateDate;
 
 	public Long getId() {
@@ -86,8 +94,6 @@ public class PatientDto {
 		this.updateDate = updateDate;
 	}
 
-	
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -138,7 +144,7 @@ public class PatientDto {
 
 	@Override
 	public String toString() {
-		return firstName + " "+lastName;
+		return firstName + " " + lastName;
 	}
 
 }

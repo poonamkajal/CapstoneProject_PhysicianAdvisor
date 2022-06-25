@@ -5,5 +5,6 @@ import com.perscholas.poonamkajal.physicianadvisor.models.Hospital;
 
 public interface HospitalService {
 	Hospital findById(Long Id);
-	   Hospital save(HospitalDto hospital);
+
+	Hospital save(HospitalDto hospital);
 }

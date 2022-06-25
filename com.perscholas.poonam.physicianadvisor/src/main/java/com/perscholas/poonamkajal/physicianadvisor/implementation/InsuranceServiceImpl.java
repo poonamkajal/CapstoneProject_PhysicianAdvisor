@@ -48,7 +48,7 @@ public class InsuranceServiceImpl {
 		Optional<Insurance> insuranceData = insuranceRepository.findById(id);
 
 		if (insuranceData.isPresent()) {
-			Insurance i  = insuranceData.get();
+			Insurance i = insuranceData.get();
 			BeanUtils.copyProperties(insurance, i);
 			System.out.println("Updating Case " + i.toString());
 			insuranceRepository.saveAndFlush(i);
@@ -59,18 +59,16 @@ public class InsuranceServiceImpl {
 		insuranceRepository.deleteById(id);
 	}
 
-	
 	public ResponseEntity<InsuranceDto> findById(Long id) {
 		try {
 			Optional<Insurance> insurance = insuranceRepository.findById(id);
 
 			if (insurance.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			else {
+			} else {
 				InsuranceDto pdto = new InsuranceDto();
 				BeanUtils.copyProperties(insurance, pdto);
-			return new ResponseEntity<>(pdto, HttpStatus.OK);
+				return new ResponseEntity<>(pdto, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

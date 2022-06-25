@@ -2,7 +2,11 @@ package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,46 +15,44 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CaseDto {
-	
+
 	private Long id;
-	
-	
+
 	private PatientDto patient = new PatientDto();
-	
-	@NotEmpty(message="Doctor cannot be blank")
+
 	private DoctorDto doctor = new DoctorDto();
-	
-	@NotEmpty
+
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date dateOfAdmission;
-	
+
+	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date dateOfDischarge;
-	
+
 	@NotEmpty
 	private String medicalRecordId;
-	
+
 	@NotEmpty
 	private String diagnosis;
-	
-	@NotEmpty
+
 	private HospitalDto hospital = new HospitalDto();
-	
-	@NotEmpty
+
 	private InsuranceDto primaryInsurance = new InsuranceDto();
-	
+
 	private InsuranceDto secondaryInsurance = new InsuranceDto();
 
 	@NotEmpty
 	private String attendingDoctorName;
-	
-	@NotEmpty
-	private String attendingDoctorContactNo;
-	
-	@NotEmpty
-	private String paReco; 
-	
-	@NotEmpty
-	private String caseStatus;
 
+	@NotEmpty
+    private String attendingDoctorContactNo;
+
+	@NotEmpty
+	private String paReco;
+
+	@NotEmpty
+    private String caseStatus;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -58,6 +60,7 @@ public class CaseDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public PatientDto getPatient() {
 		return patient;
 	}
@@ -171,5 +174,5 @@ public class CaseDto {
 				+ ", attendingDoctorContactNo=" + attendingDoctorContactNo + ", paReco=" + paReco + ", caseStatus="
 				+ caseStatus + "]";
 	}
-	
+
 }
