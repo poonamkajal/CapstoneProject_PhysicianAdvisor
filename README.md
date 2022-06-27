@@ -11,12 +11,21 @@ For building and running the application you need:
 - Maven
 - Hibernate/ORM
 - MariaDB
-- HTML/CSS?JavaScript/Bootstrap
+- HTML/CSS/JavaScript/Bootstrap
 - Spring JPA
 - Spring Security
 
 ## Login Page:
-<img src="./CapstoneProject_PhyscianAdvisor/com.perscholas.poonam.physicianadvisor/img/login page.png" >
+<img src="./com.perscholas.poonam.physicianadvisor/img/login page.png" >
+
+## Register Page:
+<img src="./com.perscholas.poonam.physicianadvisor/img/registration page.png" >
+
+## Home Page:
+<img src="./com.perscholas.poonam.physicianadvisor/img/Admin home page.png" >
+
+
+
 
 
 
