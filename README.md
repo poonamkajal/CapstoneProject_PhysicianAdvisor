@@ -22,7 +22,18 @@ For building and running the application you need:
 <img src="./com.perscholas.poonam.physicianadvisor/img/registration page.png" >
 
 ## Home Page:
-<img src="./com.perscholas.poonam.physicianadvisor/img/Admin home page.png" >
+<img src="./com.perscholas.poonam.physicianadvisor/img/home page.png" >
+
+## Admin Page:
+<img src="./com.perscholas.poonam.physicianadvisor/img/Admin page.png" >
+
+## Doctor Page:
+<img src="./com.perscholas.poonam.physicianadvisor/img/Doctor page.png" >
+
+
+
+
+
 
 
 
