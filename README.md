@@ -1,6 +1,6 @@
 # Full Stack Capstone Project: PHYSICIAN ADVISOR
 
-This Project is created to support Hospital for Physian Advice. If any Hospital need advice on procedure or insurance coverage, then they can create a case for the Physician Advisor to seek their advice. This project based on Spring Boot and Thymeleaf.
+This Project is created to support Hospital for Physician Advice. If any Hospital need advice on procedure or insurance coverage, then they can create a case for the Physician Advisor to seek their advice. This project based on Spring Boot and Thymeleaf.
 
 ## Requirements
 
