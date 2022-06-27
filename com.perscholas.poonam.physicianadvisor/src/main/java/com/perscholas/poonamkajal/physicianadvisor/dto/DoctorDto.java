@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class DoctorDto {
 
 	private Long id;
@@ -24,6 +23,18 @@ public class DoctorDto {
 	@NotEmpty
 	@Email
 	private String email;
+	
+	public DoctorDto(){
+		
+	}
+	public DoctorDto(Long id, String firstName, String lastName, String email) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		
+	}
+
 
 	public String getEmail() {
 		return email;
@@ -69,5 +80,6 @@ public class DoctorDto {
 	public String toString() {
 		return "ID:" + id + "   " + firstName + " " + lastName;
 	}
+	
 
 }

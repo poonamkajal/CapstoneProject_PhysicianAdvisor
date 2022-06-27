@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +29,7 @@ import com.perscholas.poonamkajal.physicianadvisor.dto.HospitalDto;
 @Controller
 @RequestMapping("cases")
 public class CaseController {
+	private static final Logger log = LoggerFactory.getLogger(CaseController.class);
 	@Autowired
 	private CaseServiceImpl caseService;
 
@@ -38,6 +41,7 @@ public class CaseController {
 
 	@GetMapping("/addcase")
 	public String addCase(Model model) {
+
 		CaseDto cdto = new CaseDto();
 		model.addAttribute("cases", cdto);
 
@@ -46,6 +50,7 @@ public class CaseController {
 
 		List<HospitalDto> allhospitals = hospitalService.getAllHospital();
 		model.addAttribute("hospitals", allhospitals);
+
 
 		return "cases/addcase";
 	}
@@ -100,6 +105,8 @@ public class CaseController {
 
 	@GetMapping("/allcases")
 	public String getAllCases(Model model) {
+		log.info("All case started");
+
 		List<CaseDto> cdtol = caseService.getAllCases();
 		model.addAttribute("caselist", cdtol);
 		return "cases/allcases";

@@ -38,11 +38,12 @@ public class DoctorServiceImpl {
 		return ddto;
 	}
 
-	public void addDoctor(DoctorDto doctor) {
+	public Doctor addDoctor(DoctorDto doctor) {
 		Doctor d = new Doctor();
 		BeanUtils.copyProperties(doctor, d);
 		System.out.println("Saving doctor" + d);
-		doctorRepository.save(d);
+		Doctor ret = doctorRepository.save(d);
+		return ret;
 	}
 
 	public void updateDoctor(long id, DoctorDto doctor) {
@@ -76,4 +77,5 @@ public class DoctorServiceImpl {
 		}
 	}
 
+	 
 }
