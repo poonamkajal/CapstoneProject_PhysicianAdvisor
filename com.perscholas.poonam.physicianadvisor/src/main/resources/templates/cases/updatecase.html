@@ -39,6 +39,8 @@
 						<table align="center" width=50%>
 						<tr>
 
+								<input type="hidden" th:field="*{id}">
+								<input type="hidden" th:field="*{patient.id}">
 								<td>
 									<dt for="firstName">Patient First Name:</dt><input type="text" th:field="*{patient.firstName}"
 											class="form-control" required="" placeholder="Patient First Name">
@@ -76,6 +78,7 @@
 							</tr>
 							<tr>
 
+								<input type="hidden" th:field="*{patient.address.id}">
 								<td><dt for="address">Patient Address:</dt><input
 										th:field="*{patient.address.addressLine1}" class="form-control" required=""
 										placeholder="Patient Address" /></td>
@@ -155,6 +158,7 @@
 							</tr>
 							<tr>
 
+								<input type="hidden" th:field="*{primaryInsurance.id}">
 								<td><dt for="providerName">Insurance Provider Name</dt><input type="text" th:field="*{primaryInsurance.providerName}" class="form-control"
 										required="" placeholder="Insurance Provider Name"></td>
 							</tr>
@@ -180,7 +184,7 @@
 							</tr>
 							<tr>
 
-								<td><dt for="contactNo">Date of Discharge:</dt><input type="text" th:field="*{primaryInsurance.contactNo}" class="form-control"
+								<td><dt for="contactNo">Contact No:</dt><input type="text" th:field="*{primaryInsurance.contactNo}" class="form-control"
 										required="" placeholder="Insurance Contact No"></td>
 							</tr>
 							<tr>

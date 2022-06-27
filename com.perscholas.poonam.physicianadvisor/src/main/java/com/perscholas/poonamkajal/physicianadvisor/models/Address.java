@@ -1,6 +1,5 @@
 package com.perscholas.poonamkajal.physicianadvisor.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

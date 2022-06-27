@@ -1,10 +1,14 @@
 package com.perscholas.poonamkajal.physicianadvisor.controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -58,6 +62,11 @@ public class CaseController {
 		model.addAttribute("hospitals", allhospitals);
 
 		return "cases/updatecase";
+	}
+
+	@GetMapping("/docupdate/{id}")
+	public String docUpdateCase(@PathVariable("id") Long id, Model model) {
+		return updateCase(id, model);
 	}
 
 	@GetMapping("/doctorcases")
@@ -118,6 +127,31 @@ public class CaseController {
 			caseService.addCase(cases);
 		} else {
 			caseService.updateCase(cases.getId(), cases);
+		}
+		
+		Collection<? extends GrantedAuthority> userRoles;
+
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			userRoles = ((UserDetails) principal).getAuthorities();
+
+			for (GrantedAuthority userRole : userRoles) {
+				if (userRole.getAuthority().equals("ROLE_ADMIN")) {
+					List<CaseDto> cdtol = caseService.getAllCases();
+					model.addAttribute("caselist", cdtol);
+					return "redirect:/cases/allcases";
+				}
+				if (userRole.getAuthority().equals("ROLE_DOCTOR")) {
+					List<CaseDto> cdtol = caseService.getDocCases();
+					model.addAttribute("doccaselist", cdtol);
+					return "redirect:/cases/doctorcases";
+				}
+				if (userRole.getAuthority().equals("ROLE_USER")) {
+					List<CaseDto> cdtol = caseService.getUserCases();
+					model.addAttribute("usercaselist", cdtol);
+					return "redirect:cases/usercases";
+				}
+			}
 		}
 
 		return "redirect:/cases/allcases";

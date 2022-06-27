@@ -28,9 +28,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/registration**", "/js/**", "/css/**", "/img/**", "/webjars/**")
-				.permitAll().antMatchers("/cases/view/**", "/cases/usercases").hasRole("USER")
-				.antMatchers("/cases/update/**", "/cases/doctorcases").hasRole("DOCTOR")
-				.antMatchers("/cases/**", "/doctor/**", "/hospital/**").hasRole("ADMIN").and().formLogin()
+				.permitAll()
+				.antMatchers("/cases/view/**", "/cases/usercases").hasRole("USER")
+				.antMatchers("/cases/save").hasAnyRole("ADMIN","DOCTOR")
+				.antMatchers("/cases/docupdate/**", "/cases/doctorcases").hasRole("DOCTOR")
+				.antMatchers("/cases/update/**","/cases/**", "/doctor/**", "/hospital/**").hasRole("ADMIN")
+				.and()
+				.formLogin()
 				.loginPage("/login").permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
 				.permitAll();

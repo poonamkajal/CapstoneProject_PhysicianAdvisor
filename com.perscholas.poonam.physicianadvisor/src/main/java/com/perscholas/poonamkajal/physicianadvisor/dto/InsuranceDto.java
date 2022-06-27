@@ -1,13 +1,11 @@
 package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 import java.util.Date;
-
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,12 +27,11 @@ public class InsuranceDto {
 	private String groupId;
 
 	@NotEmpty
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
-	@Past
+	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
 	private Date effectiveDate;
 
 	@NotEmpty
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
+	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
 	@Future
 	private Date expirationDate;
 

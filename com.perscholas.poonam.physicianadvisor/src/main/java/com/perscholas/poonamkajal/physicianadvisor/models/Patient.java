@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Patient", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "Patient")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {

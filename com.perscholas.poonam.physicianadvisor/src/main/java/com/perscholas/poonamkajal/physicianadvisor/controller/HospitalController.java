@@ -51,7 +51,7 @@ public class HospitalController {
 		return hospitalService.getHospitalById(id);
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/updatehospital")
 	public String saveHospital(@ModelAttribute("hospital") @Valid HospitalDto hos, BindingResult errors, Model model) {
 		System.out.println("Saving hospital " + hos.toString());
 

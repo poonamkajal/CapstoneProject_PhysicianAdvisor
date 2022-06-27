@@ -50,6 +50,10 @@ public class MainController {
 
 		return "index";
 	}
+	//@GetMapping("/index")
+	public String root(Model model) {
+		return "index";
+	}
 
 	@GetMapping("/about")
 	public String about(Model model) {

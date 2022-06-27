@@ -2,10 +2,11 @@ package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,11 +22,12 @@ public class CaseDto {
 	private PatientDto patient = new PatientDto();
 
 	private DoctorDto doctor = new DoctorDto();
+    
+	@NotNull
+	 @DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
+     private Date dateOfAdmission;
+	 @DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
 
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
-	private Date dateOfAdmission;
-
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date dateOfDischarge;
 
 	@NotEmpty

@@ -1,10 +1,8 @@
 package com.perscholas.poonamkajal.physicianadvisor.dto;
 
 
-import javax.persistence.Column;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +15,7 @@ public class AddressDto {
 	private Long id;
 
 	@NotEmpty
-	@Column(name="Address 1")
-
-	private String addressLine1;
+    private String addressLine1;
 	
     private String addressLine2;
 

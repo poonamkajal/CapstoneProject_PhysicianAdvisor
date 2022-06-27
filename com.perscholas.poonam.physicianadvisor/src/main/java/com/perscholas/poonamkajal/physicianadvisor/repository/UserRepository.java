@@ -10,7 +10,6 @@ import com.perscholas.poonamkajal.physicianadvisor.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByEmail(String email);
-	// User findByConfirmationToken(String confirmationToken);
 
 	List<User> findAll();
 }
