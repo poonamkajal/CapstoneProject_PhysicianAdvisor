@@ -27,7 +27,7 @@ For building and running the application you need:
 <img src="./com.perscholas.poonam.physicianadvisor/img/Admin page.png" >
 
 ## Doctor Page:
-<img src="./com.perscholas.poonam.physicianadvisor/img/Doctor page.png" >
+<img src="./com.perscholas.poonam.physicianadvisor/img/Doctorpage.png" >
 
 ## Technical Challenges:
 - Configuring Security was challenging for multiple roles. Specially to give access multiple role for the same page.
