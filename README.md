@@ -34,7 +34,7 @@ For building and running the application you need:
 - Data Model, defining relationships in the models like many to many, many to one.
 
 ## Future enhancement:
-- improve case UI interface.
+- Improve case UI interface.
 - Uploading images for doctors.
 
 ##### References for the templates from Colorlib: https://colorlib.com/
