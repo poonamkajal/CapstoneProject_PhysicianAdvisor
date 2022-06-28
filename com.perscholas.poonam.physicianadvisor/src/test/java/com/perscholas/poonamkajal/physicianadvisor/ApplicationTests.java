@@ -2,9 +2,9 @@ package com.perscholas.poonamkajal.physicianadvisor;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.suite.api.Suite;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import com.perscholas.poonamkajal.physicianadvisor.implementation.DoctorServiceI
 import com.perscholas.poonamkajal.physicianadvisor.models.Doctor;
 import com.perscholas.poonamkajal.physicianadvisor.repository.DoctorRepository;
 
+@Suite
 @SpringBootTest
 class ApplicationTests {
 
@@ -36,7 +37,6 @@ class ApplicationTests {
 	}
 
 	
-
 	@Test
 	public void testCreateOrSaveDoctor() {
 		DoctorDto doctor = new DoctorDto((long) 0, "Kamal", "Kajal", "kamal@doctor.com");

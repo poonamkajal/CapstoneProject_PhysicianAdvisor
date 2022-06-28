@@ -22,11 +22,11 @@ public class CaseDto {
 	private PatientDto patient = new PatientDto();
 
 	private DoctorDto doctor = new DoctorDto();
-    
+
 	@NotNull
-	 @DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
-     private Date dateOfAdmission;
-	 @DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
+	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
+	private Date dateOfAdmission;
+	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
 
 	private Date dateOfDischarge;
 
@@ -46,15 +46,14 @@ public class CaseDto {
 	private String attendingDoctorName;
 
 	@NotEmpty
-    private String attendingDoctorContactNo;
+	private String attendingDoctorContactNo;
 
 	@NotEmpty
 	private String paReco;
 
 	@NotEmpty
-    private String caseStatus;
-	
-	
+	private String caseStatus;
+
 	public Long getId() {
 		return id;
 	}

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import com.perscholas.poonamkajal.physicianadvisor.implementation.HospitalServic
 @Controller
 @RequestMapping("hospital")
 public class HospitalController {
+
+	private static final Logger log = LoggerFactory.getLogger(HospitalController.class);
 
 	@Autowired
 	private HospitalServiceImpl hospitalService;
@@ -51,12 +55,13 @@ public class HospitalController {
 		return hospitalService.getHospitalById(id);
 	}
 
-	@PostMapping("/updatehospital")
+	@PostMapping("/save")
 	public String saveHospital(@ModelAttribute("hospital") @Valid HospitalDto hos, BindingResult errors, Model model) {
 		System.out.println("Saving hospital " + hos.toString());
 
 		if (hos.getId() == null) {
 			hospitalService.addHospital(hos);
+
 		} else {
 			hospitalService.updateHospital(hos.getId(), hos);
 		}

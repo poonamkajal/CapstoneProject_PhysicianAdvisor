@@ -102,12 +102,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -125,6 +119,11 @@
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+    <groupId>org.junit.platform</groupId>
+    <artifactId>junit-platform-suite-engine</artifactId>
+    <version>1.8.1</version>
+</dependency>
 
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
