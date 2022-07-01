@@ -24,10 +24,9 @@ public class CaseDto {
 	private DoctorDto doctor = new DoctorDto();
 
 	@NotNull
-	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
+	@DateTimeFormat
 	private Date dateOfAdmission;
-	@DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
-
+	
 	private Date dateOfDischarge;
 
 	@NotEmpty

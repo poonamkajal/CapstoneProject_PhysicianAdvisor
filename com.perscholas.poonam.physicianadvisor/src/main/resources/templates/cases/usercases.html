@@ -36,7 +36,7 @@
 
 					<ol class="breadcrumb" style="background-color:#30969c">
 						<li class="breadcrumb-item">
-							<a th:href="@{/caselist/add}" style="color:black">Dashboard</a>
+							<a th:href="@{/cases/usercases}" style="color:black">Dashboard</a>
 						</li>
 						<li class="breadcrumb-item active" style="color:white">Overview</li>
 					</ol>
@@ -75,7 +75,7 @@
 													<td th:text="${cases.patient.firstName}" />
 													<td th:text="${cases.patient.lastName}" />
 													<td th:text="${cases.diagnosis}" />
-													<td th:text="${cases.dateOfAdmission}" />
+													<td th:text="${#dates.format(cases.dateOfAdmission,'MM/dd/yyyy')}" />
 													<td><a th:href="@{/cases/view/{id}(id=${cases.id})}"
 														class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
 

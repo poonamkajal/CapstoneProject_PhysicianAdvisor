@@ -75,7 +75,7 @@
 													<td th:text="${cases.patient.firstName}" />
 													<td th:text="${cases.patient.lastName}" />
 													<td th:text="${cases.diagnosis}" />
-													<td th:text="${cases.dateOfAdmission}" />
+													<td th:text="${#dates.format(cases.dateOfAdmission,'MM/dd/yyyy')}" />
 													<td> <a th:href="@{/cases/docupdate/{id}(id=${cases.id})}"
 															class="btn btn-info"><i class="fa fa-edit"></i></a>
 

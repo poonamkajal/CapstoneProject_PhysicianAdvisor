@@ -10,6 +10,8 @@ import com.perscholas.poonamkajal.physicianadvisor.repository.FieldMatch;
 		@FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
 		@FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match") })
 public class UserRegistrationDto {
+	
+
 
 	@NotEmpty
 	private String firstName;
@@ -18,8 +20,9 @@ public class UserRegistrationDto {
 	private String lastName;
 
 	@NotEmpty
-	@Pattern(regexp = "^((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])){4,12}$", message = "Password must contain atleast 1 uppercase, 1 lowercase, 1 special character and 1 digit ")
 	private String password;
+
+	
 
 	@NotEmpty
 	private String confirmPassword;
@@ -90,4 +93,6 @@ public class UserRegistrationDto {
 	public void setTerms(Boolean terms) {
 		this.terms = terms;
 	}
+
+	
 }

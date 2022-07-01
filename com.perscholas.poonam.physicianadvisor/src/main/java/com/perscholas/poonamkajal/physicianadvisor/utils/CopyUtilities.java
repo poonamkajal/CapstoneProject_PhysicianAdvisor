@@ -2,7 +2,6 @@ package com.perscholas.poonamkajal.physicianadvisor.utils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-
 import com.perscholas.poonamkajal.physicianadvisor.dto.CaseDto;
 import com.perscholas.poonamkajal.physicianadvisor.dto.HospitalDto;
 import com.perscholas.poonamkajal.physicianadvisor.dto.PatientDto;

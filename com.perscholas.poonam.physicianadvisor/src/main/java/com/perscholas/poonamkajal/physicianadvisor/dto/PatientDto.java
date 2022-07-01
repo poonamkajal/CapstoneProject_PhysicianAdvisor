@@ -24,8 +24,6 @@ public class PatientDto {
 	private String lastName;
 
 	@NotNull
-	 @DateTimeFormat(iso = ISO.DATE, fallbackPatterns = { "M/d/yy", "MM.DD.yyyy" })
-
 	private Date dob;
 
 	@NotEmpty
