@@ -1,24 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Doctor Case List</title>
-	<!-- Bootstrap core CSS-->
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-	<script src="https://kit.fontawesome.com/4d45c4ec1e.js" crossorigin="anonymous"></script>
-
-	<!-- Custom fonts for this template-->
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-	<!-- Page level plugin CSS-->
-	<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-	<!-- Custom styles for this template-->
-	<link href="/vendor/css/sb-admin.css" rel="stylesheet">
-
+<head th:include="fragments/adminpage :: headerfragment">
+    <title id="pageTitle">Doctor Case</title>
 </head>
-
 <body>
 
 	<body id="page-top"
@@ -111,25 +96,6 @@
 
 		<div th:replace="fragments/adminpage :: logout"></div>
 
-
-		<!-- Bootstrap core JavaScript-->
-		<script src="/vendor/jquery/jquery.min.js"></script>
-		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-		<!-- Core plugin JavaScript-->
-		<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-		<!-- Page level plugin JavaScript-->
-		<script src="/vendor/chart.js/Chart.min.js"></script>
-		<script src="/vendor/datatables/jquery.dataTables.js"></script>
-		<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-		<!-- Custom scripts for all pages-->
-		<script src="/vendor/js/sb-admin.min.js"></script>
-
-		<!-- Demo scripts for this page-->
-		<script src="/vendor/js/demo/datatables-demo.js"></script>
-		<script src="/vendor/js/demo/chart-area-demo.js"></script>
 	</body>
 
 </html>

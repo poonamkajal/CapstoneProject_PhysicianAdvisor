@@ -24,7 +24,6 @@ public class CaseDto {
 	private DoctorDto doctor = new DoctorDto();
 
 	@NotNull
-	@DateTimeFormat
 	private Date dateOfAdmission;
 	
 	private Date dateOfDischarge;

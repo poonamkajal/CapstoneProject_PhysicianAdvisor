@@ -3,11 +3,7 @@ package com.perscholas.poonamkajal.physicianadvisor.dto;
 import java.util.Date;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

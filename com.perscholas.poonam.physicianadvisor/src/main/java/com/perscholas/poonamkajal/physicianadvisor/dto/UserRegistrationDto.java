@@ -22,8 +22,6 @@ public class UserRegistrationDto {
 	@NotEmpty
 	private String password;
 
-	
-
 	@NotEmpty
 	private String confirmPassword;
 
